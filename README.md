@@ -14,6 +14,9 @@ Mouse is for looking around as game is first person
 W+Shift allows for runnning 
 LMB fires the Alkaline Gun
 
+How to Run:
+The game so far runs using the Live Server extension on VS code and boots up on a browser tab. To load the game, you will need to have the index.html file selected on VS code and open the Live Server.
+
 Since the submission version of this project has been submitted, I am now intending to utilize more aspects of JavaScript to expand it. This involves doing the following:
 1. Replacing solid-color textures with proper texture maps.
 2. Do more rendering and object creation with Three.js and other external libraries.
