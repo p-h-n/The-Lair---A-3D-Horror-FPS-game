@@ -1,0 +1,63 @@
+/*full screen canvas*/
+html, body {
+    margin: 0;
+    overflow: hidden;
+}
+
+#glcanvas {
+    width: 100vw;
+    height: 100vh;
+    display: block;
+}
+#ui-overlay {
+    display: none; /* Hidden by default */
+    position: absolute;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background: rgba(0, 0, 0, 0.85); /* Dark transparent background */
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.menu-content {
+    background: #1a1a1a;
+    padding: 40px;
+    border: 2px solid #ff0000; /* Red border for horror feel */
+    text-align: center;
+    min-width: 300px;
+}
+
+#volume-slider {
+    width: 100%;
+    cursor: pointer;
+    accent-color: #ff0000;
+}
+
+button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background: #ff0000;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover { background: #b30000; }
+
+#minimap {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    width: 180px;
+    height: 180px;
+    border: 2px solid rgba(255, 220, 50, 0.6);
+    border-radius: 6px;
+    background: rgba(0, 0, 0, 0.65);
+    display: block;         
+    z-index: 50;
+    image-rendering: pixelated;
+}

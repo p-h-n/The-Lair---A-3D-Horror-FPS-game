@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Lair</title>
+    <!--All the css files used to help with layout. White and black backgrounds are boring.-->
+    <link rel="stylesheet" href="user-interface.css">
+    <link rel="stylesheet" href="game-over.css">
+    <link rel="stylesheet" href="gun-interface.css">
+    <link rel="stylesheet" href="conditions.css">
+    <link rel="stylesheet" href="stamina.css">
+    <!--Linking an icon for the Lair. Bloodshot eye-->
+    <link rel="icon" type="image/x-icon" href="assets/bloodshot-eye.jpg">
+</head>
+<body>
+    <!-- Below is the Menu. This has settings for controling the
+     volume and understanding controls for the player and the gun,
+     way before they even find the gun. This menu pops up when M is pressed.
+     The player even has an option to restart the maze. -->
+   <div id="ui-overlay">
+    <div class="menu-content">
+        <h1>PAUSED</h1>
+        
+        <div class="setting">
+            <label for="volume-slider">MASTER VOLUME</label>
+            <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.05">
+        </div>
+
+        <div class="controls-list">
+            <h3>CONTROLS</h3>
+            <p><b>W A S D</b> - WALK</p>
+            <p><b>M</b> - OPEN/CLOSE MENU</p>
+            <p><b>LMB</b> - SHOOT GUN</p>
+            <p><b>W+SHIFT</b> - RUN</p>
+            <P><b></b></P>
+        </div>
+<!--The Restart Button doesn't erase the previous maze. The only thing that does that
+entering a new Lair, because the Algorithm kicks in-->
+        <div id="restart-btn">RETURN TO START</div>
+    </div>
+</div>
+<!--Game Over Screen Layout. It is is initially hidden.-->
+    <div id="game-over-screen" class="hidden">
+        <h1 id="game-over-text">GAME OVER</h1>
+        <hp id="kill-stat">SEEKERS ELIMINATED:<span id="kill-count-gameover">0</span></p>
+        <button id="respawn-btn">RESPAWN</button>
+    </div>
+<!--Crosshairs make it a bit easier to aim. It only shows up when the gun is picked up-->
+    <div id="crosshair" class="hidden">
+        <span class="cross-h"></span>
+        <span class="cross-v"></span>
+    </div>
+<!--Display for the ammunition of the Gun. It only shows up when the gun is picked up-->
+    <div id="ammo-display" class="hidden">
+        <span id="ammo-count">0</span>
+        <span class="ammo-label">/5</span>
+    </div>
+<!--This is the container for the stamina bar. -->
+        <div id="stamina-bar-container">
+        <div id="stamina-bar"></div>
+    </div>
+<!--The start screen constains the game title and a synopsis.
+Beneath the synopsis and the selection button is a hint to open the menu.
+Players when they enter the maze will most likely press M as they are told to do so.-->
+    <div id="start-screen">
+        <h1 id="game-title">THE LAIR</h1>
+        <p class="synopsis"> 
+    You are in a maze - one with no landmarks, no guidance and numerous dead ends.
+    Somewhere within this labyrinth lies an exit, 
+    though reaching it will demand far more than navigation alone, 
+    for you are not the only presence here.
+    These narrow corridors and dim yellow walls are home to a number 
+    of inhuman wardens. The Seekers. 
+    They do not eat. They do not rest. 
+    They exist with a singular purpose: to patrol the maze searching for 
+    a single heartbeat. Your heartbeat.
+    The moment they hear it, they will know precisely where you are, 
+    and they will not stop until you are either beyond their senses or within their grasp.
+    You were never meant to be here and they know it.
+    Find the exit. 
+    Evade the Seekers. 
+    Do not die.</p>
+    <button id="start-btn">CHOOSE YOUR MAZE</button>
+    <p class="hint">Press M for Menu</p>
+    </div>
+<!--Win screen that shows when the player reaches the end of the maze.-->
+    <div id="win-screen" class="hidden">
+        <h1 id="win-title">YOU ESCAPED</h1>
+    <p class="win-stat">Seekers Eliminated: <span id="kill-count-win">0</span></p>
+    <p class="win-stat">Times Caught: <span id="death-count">0</span></p>
+    <button id="restart-btn2">RETURN TO START</button>
+    </div>
+<!--For a replayability factor, the player is allowed to build their maze. They don't choose where the 
+walls go. the Kruskal Algorithm does that, but the player chooses the nxn size of the maze. They also 
+can choose how many Seekers can be in the maze. As 1 Seeker in a 200x200 maze means the player
+will most likely not run into it and 8 Seekers in a 20x20 maze is just overkill. Variation helps.-->
+<div id="difficulty-screen" class="hidden">
+    <h2 id="difficulty-title">CONFIGURE YOUR LAIR</h2>
+
+    <div class="difficulty-option">
+        <label class="diff-label">MAZE SIZE</label>
+        <p class="diff-desc">Larger mazes mean longer corridors and more places to get lost.</p>
+        <div class="option-group" id="size-options">
+            <button class="opt-btn" data-value="21">SMALL<span>20×20</span></button>
+            <button class="opt-btn selected" data-value="41">MEDIUM<span>40×40</span></button>
+            <button class="opt-btn" data-value="61">LARGE<span>60×60</span></button>
+            <button class="opt-btn" data-value="81">VAST<span>80×80</span></button>
+            <button class="opt-btn" data-value="101">COLOSSAL<span>100x100</span></button>
+            <button class="opt-btn" data-value="201">TITANIC<span>200x200</span></button>
+        </div>
+    </div>
+<!--There are mulitple buttons that are classified as option buttons. 
+They have the same class but their values are different. Depending on which button is
+pressed, data value of the element chosen will spawn that set amount of Seekers.-->
+    <div class="difficulty-option">
+        <label class="diff-label">NUMBER OF SEEKERS</label>
+        <p class="diff-desc">Each Seeker independently patrols and hunts. Choose wisely.</p>
+        <div class="option-group" id="seeker-options">
+            <button class="opt-btn selected" data-value="1">1</button>
+            <button class="opt-btn" data-value="2">2</button>
+            <button class="opt-btn" data-value="3">3</button>
+            <button class="opt-btn" data-value="4">4</button>
+            <button class="opt-btn" data-value="5">5</button>
+            <button class="opt-btn" data-value="6">6</button>
+            <button class="opt-btn" data-value="7">7</button>
+            <button class="opt-btn" data-value="8">8</button>
+            <button class="opt-btn" data-value="9">9</button>
+            <button class="opt-btn" data-value="10">10</button>
+        </div>
+    </div>
+
+    <button id="enter-btn">ENTER THE LAIR</button>
+<!--This is an option if the player wants to chicken out.-->
+    <button id="back-btn">GO BACK</button>
+</div>
+<!--There are two canvases. The main canvas, glcanvas, is the player's eyes and the reference for the environment.
+The minimap is a smaller, separate canvas that only has two components: the walkalbe tile layouts and the dot for the player.
+A logic in the canvas is tracking the tiles that the player has walked on.-->
+   <div>
+   <canvas id="minimap" width="180" height="180"></canvas>
+   </div>
+<canvas id="glcanvas"></canvas>
+
+    <!--Once the main.js file began getting large and OOP seemed to be an easier way to separate 
+    files and classes, the main.js file NEEDED to be a module type so that it could accept imports. 
+    I was curious as to whether this was possible as it is possible in Java.-->
+    <script type="module" src="main.js"></script>
+
+</body>
+</html>

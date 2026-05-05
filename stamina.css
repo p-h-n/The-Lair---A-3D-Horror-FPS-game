@@ -1,0 +1,19 @@
+#stamina-bar-container {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
+    height: 10px;
+    background: rgba(0,0,0,0.4);
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+#stamina-bar {
+    height: 100%;
+    width: 100%;
+    background: #e5f900;
+    transition: background 0.2s;
+    border-radius: 5px;
+}

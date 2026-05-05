@@ -1,0 +1,205 @@
+#start-screen {
+    position: fixed;
+    inset: 0;
+    background: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    z-index: 100;
+}
+
+#game-title {
+    font-family: monospace;
+    font-size: 72px;
+    color: red;
+    letter-spacing: 12px;
+    margin: 0;
+}
+
+#game-subtitle {
+    font-family: monospace;
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.6);
+    margin: 0;
+}
+
+#start-btn, #restart-btn{
+    font-family: monospace;
+    font-size: 18px;
+    padding: 12px 40px;
+    background: transparent;
+    color: red;
+    border: 1px solid red;
+    cursor: pointer;
+    letter-spacing: 4px;
+    margin-top: 20px;
+}
+
+#start-btn:hover, #restart-btn:hover, #return-btn:hover {
+    background: red;
+    color: black;
+}
+
+#win-screen {
+    position: fixed;
+    inset: 0;
+    background: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    z-index: 100;
+}
+
+#win-title {
+    font-family: monospace;
+    font-size: 64px;
+    color: white;
+    letter-spacing: 8px;
+    margin: 0;
+}
+
+.win-stat {
+    font-family: monospace;
+    font-size: 22px;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+}
+
+.win-stat span {
+    color: white;
+}
+.synopsis{
+   font-family: monospace;
+    font-size: 22px;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+    text-align: center;
+}
+.hint{
+    font-family: monospace;
+    font-size: 22px;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0;
+    text-align: center;
+}
+/* ── Difficulty / Selection Screen ── */
+#difficulty-screen {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    background: rgba(0, 0, 0, 0.92);
+    z-index: 200;
+    color: #f5d000;
+    font-family: 'Courier New', monospace;
+}
+
+#difficulty-title {
+    font-size: 1.8rem;
+    letter-spacing: 0.3em;
+    margin: 0;
+    text-shadow: 0 0 18px #f5d00088;
+}
+
+.difficulty-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.diff-label {
+    font-size: 0.85rem;
+    letter-spacing: 0.25em;
+    color: #aaa;
+}
+
+.diff-desc {
+    font-size: 0.72rem;
+    color: #555;
+    margin: 0;
+    letter-spacing: 0.05em;
+}
+
+.option-group {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.opt-btn {
+    background: transparent;
+    border: 1px solid #444;
+    color: #888;
+    padding: 10px 18px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    transition: all 0.15s ease;
+    min-width: 60px;
+}
+
+.opt-btn span {
+    font-size: 0.65rem;
+    color: #555;
+}
+
+.opt-btn:hover {
+    border-color: #f5d000;
+    color: #f5d000;
+}
+
+.opt-btn.selected {
+    border-color: #f5d000;
+    color: #f5d000;
+    background: rgba(245, 208, 0, 0.08);
+    box-shadow: 0 0 10px #f5d00044;
+}
+
+.opt-btn.selected span {
+    color: #c8a800;
+}
+
+#enter-btn {
+    margin-top: 8px;
+    background: transparent;
+    border: 1px solid #f5d000;
+    color: #f5d000;
+    padding: 12px 40px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    letter-spacing: 0.3em;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+#enter-btn:hover {
+    background: rgba(245, 208, 0, 0.12);
+    box-shadow: 0 0 20px #f5d00066;
+}
+
+#back-btn {
+    background: transparent;
+    border: none;
+    color: #444;
+    font-family: 'Courier New', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    cursor: pointer;
+    transition: color 0.15s;
+}
+
+#back-btn:hover { color: #888; }
