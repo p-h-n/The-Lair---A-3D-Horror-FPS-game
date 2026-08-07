@@ -22,3 +22,5 @@ Since the submission version of this project has been submitted, I am now intend
 2. Do more rendering and object creation with Three.js and other external libraries.
 3. Transition the project from an arcade like game to something with an actual narrative like what was imagined earlier in the project's creation.
 4. Export as a standalone file using Electron.js or something similar.
+
+To have a look at how the game was made, what inspirations there were and a better deep dive into the mechanics that went into it, please have a look at the Report_on_The_Lair.pdf in the Report branch.
